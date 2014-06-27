@@ -1,0 +1,7 @@
+{
+  "name": "introduction-to-javascript",
+  "version": "0.0.0",
+  "dependencies": {
+    "reveal.js": "9da2921b7452204b99cd1b3e448e22735f16c751"
+  }
+}

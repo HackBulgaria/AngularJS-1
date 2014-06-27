@@ -1,0 +1,1618 @@
+<section>
+  <h1>Introduction to JavaScript</h1>
+  <h4>Minko Gechev</h4>
+  <ul>
+    <li><a href="http://twitter.com/mgechev" target="_blank">twitter.com/mgechev</a></li>
+    <li><a href="http://github.com/mgechev" target="_blank">github.com/mgechev</a></li>
+    <li><a href="http://blog.mgechev.com/" target="_blank">blog.mgechev.com</a></li>
+  </ul>
+</section>
+
+<section>
+  <ul class="build">
+      <li>Data types</li>
+      <li>Variable scope</li>
+      <li>Inheritance</li>
+      <li>Immediately-Invoked Function Expression (IIFE)</li>
+      <li>Exception handling</li>
+      <li>Object-oriented principles</li>
+      <li>Design patterns</li>
+      <li>Namespace pattern</li>
+      <li>Modules</li>
+      <li>Publish/subscribe</li>
+      <li>Sample architecture</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Data types</h3>
+  <ul class="build">
+    <li>Primitives - basic building blocks, they can't have methods or properties</li>
+    <li>Objects - may have properties which could be different objects or primitives</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Primitives</h3>
+  <ul>
+    <li>Number - floating point numbers (based on IEEE 754)</li>
+    <li>String - immutable, for each action new string is created. <br>[] operator is pre-defined for them but is read-only.</li>
+    <li>Boolean - literals true and false</li>
+    <li>Undefined - contains a single value - undefined. All variables without value are initialized to undefined</li>
+    <li><i>Null</i></li>
+  </ul>
+</section>
+
+<section>
+  <h3>typeof operator</h3>
+  <p>typeof is operator, not a function (the parentheses in typeof(1) are the same as -(1)). It has single operand and its application results a string.</p>
+  <pre><code>
+  typeof 1 //number
+  typeof 'foo' //string
+  typeof true //boolean
+  typeof undefined //undefined
+  typeof null //object
+  </code></pre>
+</section>
+
+<section>
+  <h3>Bad</h3>
+  <pre><code>
+    function foo(bar) {
+      if (typeof bar === 'object') {
+        bar.baz(); //type error when null is used
+      }
+    }
+  </code></pre>
+  <h3>Better</h3>
+  <pre><code>
+    function foo(bar) {
+      if (bar && typeof bar.baz === 'function') {
+        bar.baz();
+      }
+    }
+  </code></pre>
+</section>
+
+<section>
+  <h3>Check if variable exists</h3>
+  <pre><code>
+    if (typeof variable !== 'undefined') {
+      //do something
+    }
+  </code></pre>
+  if is already defined:
+  <pre><code>
+    if (variable !== undefined) //undefined is mutable in older browsers
+  </code></pre>
+</section>
+
+<section>
+  <h3>Number to String</h3>
+  <pre><code>
+  var num = parseInt('42');
+  </code></pre>
+  <div>...but in older versions...</div>
+  <pre><code>
+  var num = parseInt('08');
+  console.log(num); //0
+  </code></pre>
+  <pre><code>
+  var num = parseInt('08', 10);
+  </code></pre>
+  <h3>Do not forget the second parameter!</h3>
+</section>
+
+<section>
+  <h3>NaN</h3>
+  <p>
+    What happens when given string cannot be converted to number?
+  </p>
+  <pre><code>
+  var number = parseInt('not a number', 10);
+  number == number //false
+  number === number //false
+  number !== number //true
+  typeof number //'number'
+  isNaN(number); //true
+  </code></pre>
+</section>
+
+<section>
+  <h3>Numbers</h3>
+  <p>Be aware of...</p>
+  <pre><code>
+  0.1 + 0.2 //0.30000000000000004
+  Math.pow(2, 53) === Math.pow(2, 53) + 1 //true
+  0 == ''
+  </code></pre>
+</section>
+
+<section>
+  <h3>Booleans and boolean operators</h3>
+  <p>The following values are evaluated to false:</p>
+  <ul>
+    <li>false</li>
+    <li>undefined</li>
+    <li>NaN</li>
+    <li>null</li>
+    <li>0</li>
+    <li>''</li>
+  </ul>
+  <p>Everything else is evaluated to true.</p>
+</section>
+
+<section>
+  <h3>Usage of boolean operators</h3>
+  <p>Often we want to make sure given value is boolean. Short way to do this is:</p>
+  <pre><code>
+    var boolValue = !!notBoolValue;
+  </code></pre>
+  <p>Short way for:</p>
+  <pre><code>
+  if (!value) {
+      value = 1;
+  }
+  </code></pre>
+  <pre><code>
+  value = value || 1;
+  </code></pre>
+</section>
+
+<section>
+  <h3>Objects</h3>
+  <p>Objects are also used for hash maps. Something specific for them is that their keys can be only strings!</p>
+  <pre><code>
+  var obj = {},
+      obj2 = { foo: 'foo' },
+      obj3 = { bar: 'bar' };
+  obj[obj2] = obj2;
+  obj[obj3] = obj3;
+  console.log(obj[obj2]); //{ bar: 'bar' }
+  console.log(Object.keys(obj)); //["[object Object]"]
+  </code></pre>
+</section>
+
+<section>
+  <h3>Objects</h3>
+  <pre><code>
+  var obj = {};
+  </code></pre>
+  <div>If we want to add properties:</div>
+  <pre><code>
+  var obj = { foo: 'bar' };
+  </code></pre>
+  <div>...or methods...</div>
+  <pre><code>
+  var obj = {
+    foo: function () {
+      //body
+    }
+  }
+  </code></pre>
+</section>
+
+<section>
+  <h3>Interating over objects</h3>
+  <pre><code>
+    for (var key in value) {
+      //do something
+    }
+  </code></pre>
+  Later we're going to look at <strong>Object.key</strong>.
+</section>
+
+<section>
+  <h3>Arrays</h3>
+  <pre><code>
+  var arr1 = [];
+  var arr2 = new Array(size);
+  </code></pre>
+  <p>It is better to use the first syntax, it is faster and not that verbose.</p>
+</section>
+
+<section>
+  <h3>Arrays</h3>
+  In ES5 there were included few very useful methods:
+  <ul>
+    <li>forEach</li>
+    <li>filter</li>
+    <li>map</li>
+    <li>every</li>
+    <li>some</li>
+    <li>indexOf</li>
+    <li>lastIndexOf</li>
+    <li>reduce</li>
+    <li>reduceRight</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Example - reduce</h3>
+  Sum of the array elements:
+  <pre><code>
+  [0,1,2,3].reduce(function (p, c) {
+    return p + c;
+  }/*, optional initial value */);
+  </code></pre>
+  <pre><code>
+  [0,1,2,3].reduceRight(function (p, c) {
+    return p + c;
+  }/* optional initial value */);
+  </code></pre>
+</section>
+
+<section>
+  <h3>Functions</h3>
+  <p>Since functions are not primitives they can have properties. Typical example for this is $ of jQuery.</p>
+  <pre><code>
+  function bar() {
+    //do some awesome stuff!
+  }
+  bar.foo = 'baz';
+  </code></pre>
+</section>
+
+<section>
+  <h3>Memorization</h3>
+  <pre><code>
+  function veryHeavyFunction(arg) {
+    var res = veryHeavyFunction[arg];
+    if (res !== undefined) return res;
+    //heavy computations here...
+  }
+  </code></pre>
+  <pre><code>
+    var veryHeavyFunction = (function () {
+      var cache = {};
+      return function (arg) {
+        if (cache[arg]) return cache[arg];
+        //heavy computations
+      };
+    }());
+  </code></pre>
+</section>
+
+<section>
+  <h3>Functions</h3>
+  <p>By default each function has local variable called <strong>arguments</strong>. It is something like an array but not exactly:</p>
+  <pre><code>
+  function foo() {
+    var argsArray = Array.prototype.slice.call(arguments);
+    console.log(typeof arguments);
+    console.log(typeof arguments.length);
+    console.log(arguments instanceof Array);
+  }
+  foo(); //'object', 0, false
+  </code></pre>
+</section>
+
+<section>
+  <h3>Functions</h3>
+  <p>Functions can be passed as arguments to other functions. This is very useful when we have asynchronous code (xhr, read file, socksts, events).</p>
+  <pre><code>
+  function animate(duration, callback) {
+    if (!duration) {
+      callback();
+      return;
+    }
+    setTimeout(function () {
+      animate(duration - TIMEOUT / 1000, callback);
+    }, TIMEOUT);
+  }
+
+  animate(2, function () {
+    alert('Alert in 2 seconds');
+  });
+  </code></pre>
+</section>
+
+<section>
+  <h3>Comparison</h3>
+  <pre><code>
+    var o1 = new Object(),
+        o2 = new Object();
+    o1 === o2 //false
+    o1 == o2 //false
+    o1 &lt; o2 //false
+    o1 &gt; o2 //false
+    o1 &lt;= o2 //true
+    o1 &gt;= o2 //true
+  </code></pre>
+  <p>This happens because &lt; and &gt; cast their operands to strings implicity.</p>
+</section>
+
+<section>
+  <h3>Comparison</h3>
+  <pre><code>
+    var str = 'baz';
+    str instanceof String //false
+    typeof str === 'string' //true
+    var str2 = new String('baz');
+    str == str2 //true
+    str === str2 //false
+    str === str2.toString();
+  </code></pre>
+  <p>This is result of comparison of reference and primitive types. It is better to use primitive strings.</p>
+</section>
+
+<section>
+  <h3>Switch</h3>
+  <a href="http://www.ecma-international.org/ecma-262/5.1/#sec-12.11">Switch uses "===".</a>
+  <pre><code>
+    var a = new String('a');
+    switch (a) {
+      case 'a': alert('It\'s a!'); break;
+      default: alert('Not a?');
+    }
+  </code></pre>
+</section>
+
+<section>
+  <h3>Local variables (1)</h3>
+  <p>Local variables are declared using the keyword <strong>var</strong>.</p>
+  <p>All variables declared in the global namespace (i.e. not declared in any function or with omitted <strong>var</strong>) become properties of window.</p>
+  <pre><code>
+  var foo = 'foo';
+  console.log(window.foo);
+  console.log(window['foo']);
+  function localScope() {
+    var bar = 'bar';
+    console.log(foo, window['foo']); //foo
+  }
+  console.log(bar); //undefined
+  </code></pre>
+</section>
+
+<section>
+  <h3>Local variables (2)</h3>
+  <p>Important fact is that the variables have functional scope - not block scope!</p>
+  <p>Same applies for other flow control operators (if, do while, while, switch).</p>
+  <pre><code>
+    function foo() {
+      for (var i = 0; i &lt; 3; i += 1) {}
+      console.log(i); //3
+    }
+    foo();
+    console.log(i); //undefined
+  </code></pre>
+</section>
+
+<section>
+  <h3>Local variables (3)</h3>
+  <p>Do not omit the var keyword, because the variable will be decalred as global.</p>
+  <pre><code>
+    function foo() {
+      for (i = 0; i &lt; 3; i += 1) {}
+      console.log(i); //3
+    }
+    foo();
+    console.log(i); //3
+  </code></pre>
+</section>
+
+<section>
+  <h3>Local variables (4)</h3>
+  <p>ES6 gives us <strong>let</strong>. let allows us to declare local variables to given block (similar to languages like Java, C#, C++).</p>
+  <p>Currently is not supported by any of the major browsers.</p>
+  <pre><code>
+    function foo() {
+      for (let i = 0; i &lt; 3; i += 1) {
+        //something here
+      }
+      console.log(i); //undefined
+    }
+  </code></pre>
+</section>
+
+<section>
+  <h3>Global variables</h3>
+  <pre><code>
+  foo = new Object();
+  window['foo'] === foo //true
+  window.foo === foo //true
+  function bar() {
+    baz = 'baz';
+  }
+  bar();
+  window.baz //'baz'
+  </code></pre>
+</section>
+
+<section>
+  <h2>Instance variables</h2>
+  <p>Attached to the current context</p>
+  <pre><code>
+    window === this //true
+  </code></pre>
+</section>
+
+<section>
+  <h3>Context (1)</h3>
+  <p>The context is the <strong>this</strong> reference, which refers to specific object.</p>
+  <p>If we call method of given nested object the context of the method will be the object just before the last ".".</p>
+  <p>Using different techniques we can change the context of the functions.</p>
+</section>
+
+<section>
+  <h3>Context (2)</h3>
+  <pre><code>
+    var obj = {
+      bar: {
+        baz: function () { return this; }
+      },
+      foo: function () { return this }
+    };
+
+    function foobar() { return this; }
+
+    foobar() === window
+    obj.foo() === obj
+    obj.bar.baz() === ?
+
+  </code></pre>
+</section>
+
+<section>
+  <h3>Changing the context (1)</h3>
+  <ul class="build">
+    <li>Using new</li>
+    <li>Using call/apply</li>
+    <li>Using bind</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Changing the context (2)</h3>
+  <p>When new is called the function's context is newly created object. It will be result of the function called with new.
+  You can attach different properties and methods to "this".
+  </p>
+  <pre><code>
+    var temp;
+    function foo() {
+      console.log(this === window); //false
+      temp = this;
+    }
+    new foo === temp;
+  </code></pre>
+</section>
+
+<section>
+  <h3>Changing the context (3)</h3>
+  <p>Using the function's methods <strong>call</strong> and <strong>apply</strong> you can call a function with specific context:</p>
+  <pre><code>
+    function baz() {
+      console.log(this, arguments);
+    }
+    baz.call({ foo: 'baz' }, 1,2,3);
+    baz.apply({ foo: 'baz' }, [1,2,3]);
+  </code></pre>
+</section>
+
+<section>
+  <h3>Changing the context (4)</h3>
+  <p>Using the functions' method <strong>bind</strong> you can change the context of given function.
+    When bind is called with speicified context new function is returned. The context of the newly created function cannot be changed.</p>
+    <pre><code>
+      function foo() {
+        console.log(this);
+      }
+      foo.bind({});
+    </code></pre>
+</section>
+
+<section>
+  <h3>Schönfinkeling (Currying)</h3>
+  <p>Functional transformation. It is commonly used in languages like Haskell.</p>
+  <p>It allows to call function accepting multiple arguments with just few of them. The result of the partial application is new function
+    which accepts the rest arguments (ones which are still not filled).</p>
+  <pre><code>
+    function foo(a, b) {
+      return a + b;
+    }
+    var res = foo.bind(null, 1);
+    res(2); //3
+  </code></pre>
+</section>
+
+<section>
+  <h2>Inheritance</h2>
+  <h3>Two approaches:</h3>
+  <ul class="build">
+     <li>(Pseudo) Classical</li>
+     <li>Prototypal</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Inheritance</h2>
+  <p>In both approaches we create a prototype chain:</p>
+  <img src="images/prototype-chain.png" alt="">
+</section>
+
+<section class="smaller">
+  <h2>Classical</h2>
+  <pre><code>
+      function Person(name) {
+          this._name = name;
+      }
+      Person.prototype.getName = function () {
+          return this._name;
+      };
+
+      function Developer(name, languages) {
+          Person.call(this, name);
+          this.languages = languages;
+      }
+      Developer.prototype = new Person();
+
+      var dev = new Developer('foo', ['JavaScript', 'Perl', 'Java']);
+      console.log(dev.getName());     //"foo"
+      console.log(dev._name);         //"foo"
+      console.log(dev.languages[0]);  //"JavaScript"
+  </code></pre>
+</section>
+
+<section>
+  <h2>Classical (+/-)</h2>
+  <ul class="build green">
+      <li>Looks familiar</li>
+  </ul>
+  <ul class="build red">
+      <li>No privacy (weak encapsulation)</li>
+      <li>Unnecessary complexity</li>
+  </ul>
+</section>
+
+<section class="smaller">
+  <h2>Functional/Closure inheritance</h2>
+  <pre><code>
+      function Person(name) {
+          var _name = name;
+          this.getName = function () {
+              return _name;
+          };
+      }
+      function Developer(name, languages) {
+          var _languages = languages;
+          Person.call(this, name);
+          this.getLanguages = function () {
+              return _languages;
+          };
+      }
+      Developer.prototype = new Person();
+      var dev = new Developer('foo', ['JavaScript', 'Perl', 'Java']);
+      console.log(dev._name);     //undefined
+      console.log(dev.getName()); //"foo"
+  </code></pre>
+</section>
+
+<section>
+  <h2>Functional (+/-)</h2>
+  <ul class="build green">
+      <li>Looks fairly familiar</li>
+      <li>Real privacy</li>
+  </ul>
+  <ul class="build red">
+      <li>Multiple copies of the methods</li>
+      <li>Complex</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Prototypal (1)</h2>
+  <pre><code>
+      var person = {
+          name: 'foo',
+          age: 42
+      };
+      var dev = Object.create(person);
+      dev.languages = ['JavaScript', 'Perl', 'Java'];
+
+      console.log(dev.name);         //"foo"
+      console.log(dev.languages[0]); //"JavaScript"
+  </code></pre>
+  <p>Object.create accept object as first argument and create new object with prototype its first paramter.</p>
+</section>
+
+<section>
+  <h2>Prototypal (+/-)</h2>
+  <ul class="build green">
+      <li>Simplicity</li>
+  </ul>
+  <ul class="build red">
+      <li>Looks strange</li>
+      <li>No privacy (*)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Useful ES5 methods (1)</h2>
+  <ul class="build">
+    <li><strong>Object.create</strong> - create object with prototype its first argument</li>
+    <li><strong>Object.getPrototypeOf</strong> - get the prototype of given object</li>
+    <li><strong>Object.keys</strong> - get all enumerable keys of given object</li>
+    <li><strong>Object.getOwnPropertyNames</strong> - get all enumerable or not keys of given object</li>
+    <li><strong>Object.defineProperty(obj, prop, descriptor)</strong> - defines property by setting its</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Object.defineProperty example</h3>
+  <pre><code>
+    Object.defineProperty(obj, "key", {
+      enumerable: false,
+      configurable: false,
+      writable: false,
+      value: 'static'
+    });
+  </code></pre>
+</section>
+
+<section>
+  <h3>Object.defineProperty</h3>
+  <ul>
+    <li><strong>configurable</strong> - true if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object. Defaults to false.</li>
+    <li><strong>enumerable</strong> - true if and only if this property shows up during enumeration of the properties on the corresponding object. Defaults to false.</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Object.defineProperty</h3>
+  <ul>
+    <li><strong>value</strong> - The value associated with the property. Can be any valid JavaScript value (number, object, function, etc) Defaults to undefined.</li>
+    <li><strong>writable</strong> - True if and only if the value associated with the property may be changed with an assignment operator. Defaults to false.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Useful ES5 methods (2)</h2>
+  <ul class="build">
+    <li><strong>Object.seal</strong> - Prevents the object from adding, deleting properties</li>
+    <li><strong>Object.freeze</strong> - Same as seal but also prevents from changing properties' values</li>
+    <li><strong>Object.preventExtensions</strong></li>
+    <li><strong>Object.isSealed</strong></li>
+    <li><strong>Object.isFrozen</strong></li>
+    <li><strong>Object.isExtensible</strong></li>
+    <li><strong>Object.getOwnPropertyDescriptor</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Strict mode</h2>
+  <p>ES5 introduce "use strict";. Use strict save us from some common mistakes. According to MDN:</p>
+  Eliminates errors which makes the code difficult to be optimize thus makes the code faster
+</section>
+
+<section>
+  <h2>Strict mode</h2>
+  <p>Strict mode should be per function. It may create problems by concatenating strict and non-strict files.</p>
+</section>
+
+<section>
+  <h2>Strict mode</h2>
+  <pre><code>
+"use strict";
+mistypedVaraible = 17; // throws a ReferenceError
+  </code></pre>
+  <pre><code>
+"use strict";
+
+var obj1 = {};
+Object.defineProperty(obj1, "x", { value: 42, writable: false });
+obj1.x = 9; // throws a TypeError
+  </code></pre>
+  <pre><code>
+"use strict";
+delete Object.prototype; // throws a TypeError
+  </code></pre>
+</section>
+
+<section>
+  <h2>Strict mode</h2>
+  <pre><code>
+"use strict";
+var o = { p: 1, p: 2 }; // !!! syntax error
+
+function sum(a, a, c){ // !!! syntax error
+  "use strict";
+  return a + b + c; // wrong if this code ran
+}
+  </code></pre>
+  <pre><code>
+"use strict";
+var sum = 015 + // !!! syntax error
+          197 +
+          142;
+  </code></pre>
+</section>
+
+<section class="smaller">
+  <h2>Polymorphism</h2>
+  <pre><code>
+      function Person(name) {
+          this._name = name;
+      }
+      Person.prototype.speak = function () {
+          return 'My name is ' + this._name + '.';
+      };
+      function Developer(name, languages) {
+          Person.call(this, name);
+          this.languages = languages || [];
+      }
+      Developer.prototype = new Person();
+      Developer.prototype.speak = function () {
+          return 'My name is ' + this._name + ' and I know ' + (this.languages[0] || 'nothing') + '.';
+      };
+
+      var person = new Person('foo');
+      console.log(person.speak()); //"My name is foo and."
+      person = new Developer('foo', ['JavaScript', 'Perl', 'Java']);
+      console.log(person.speak()); //"My name is foo and I know JavaScript."
+  </code></pre>
+</section>
+
+<section>
+  <h3>Exception handling</h3>
+  <p>For excaption handling JavaScript provides:</p>
+  <ul>
+    <li>throw</li>
+    <li>try</li>
+    <li>catch</li>
+    <li>finally</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Exception handling- throw</h3>
+  <pre><code>
+    throw expression;
+  </code></pre>
+  <p><strong>throw</strong> throws an excaption which is the value from the evaluation of the expression.
+    Each of the following throws an exception:</p>
+  <pre><code>
+    throw 1;
+    throw new Error('Error!');
+    throw true;
+    throw 'Error!';
+  </code></pre>
+</section>
+
+<section>
+  <h3>Exception handling - Error</h3>
+  <p>Error is a constructor function for creating new errors. As first argument it accepts an error message.
+    The following constructor functions are extending it:</p>
+    <ul>
+      <li>EvalError - Creates an instance representing an error that occurs regarding the global function eval()</li>
+      <li>RangeError - Creates an instance representing an error that occurs when a numeric variable or parameter is outside of its valid range</li>
+      <li>ReferenceError - Creates an instance representing an error that occurs when de-referencing an invalid reference</li>
+    </ul>
+</section>
+
+<section>
+  <ul>
+      <li>SyntaxError - Creates an instance representing a syntax error that occurs while parsing code in eval()</li>
+      <li>TypeError - Creates an instance representing an error that occurs when a variable or parameter is not of a valid type</li>
+      <li>URIError - Creates an instance representing an error that occurs when encodeURI() or decodeURI() are passed invalid parameters</li>
+  </ul>
+</section>
+
+<section>
+  <h3>try..catch...finally</h3>
+  <p>All exception are handled the same way:</p>
+  <pre><code>
+try {
+  //statements
+} catch (e) {
+  //e is reference to the thrown error
+} finally {
+  //block executed on success and failture
+  //it is the right place for removing event listeners, releasing resouces
+}
+  </code></pre>
+</section>
+
+<section>
+  <h3>try...catch...finally</h3>
+  <p>The possible combinations are valid:</p>
+  <ul>
+    <li>try...catch</li>
+    <li>try...finally</li>
+    <li>try...catch...finally</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Immediately-Invoked Function Expression (IIFE)</h2>
+  <h3>Problem</h3>
+  <ul class="build">
+      <li>Initializing some stuff</li>
+      <li>Not polluting the global namespace</li>
+      <li>Doing the initialization only once</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Sample solution (1)</h3>
+  <pre><code>
+      function addHandlers() {
+          //body
+      }
+      function performLayout() {
+          //body
+      }
+      addHandlers();
+      performLayout();
+  </code></pre>
+  <ul class="build">
+      <li class="red">Multiple globals</li>
+      <li class="red">Can be called multiple times</li>
+  </ul>
+</section>
+
+<section>
+ <h3>Sample solutions (2)</h3>
+ <pre><code>
+    //Variant 1
+    function init() {
+        function addHandlers() {
+        }
+        addHandlers();
+    }
+    init();
+ </code></pre>
+ <ul class="build">
+    <li class="red">Polluting the global namespace (1 global)</li>
+    <li class="red">Can be called multiple times</li>
+    <li class="red">Ugly</li>
+ </ul>
+</section>
+
+<section>
+  <h3>Sample solution (3)</h3>
+  <pre><code>
+     //Variant 2
+     var init = function () {
+         function addHandlers() {
+         }
+         addHandlers();
+     };
+     init();
+     delete window.init;
+ </code></pre>
+  <ul class="build">
+      <li class="red">Ugly</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Solution</h3>
+  <pre><code>
+     (function (w, d) {
+         //initialization
+     }(window, document));
+  </code></pre>
+  <ul class="build">
+      <li class="green">Fixing all issues</li>
+      <li class="red">Hard to understand</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Sample usage</h3>
+  <pre><code>
+//Load facebook's SDK asynchronously
+(function(d){
+  var js, id = 'facebook-jssdk',
+      refr = d.getElementsByTagName('script')[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement('script'); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  refr.parentNode.insertBefore(js, refr);
+}(document));
+  </code></pre>
+</section>
+
+  <section>
+    <h2>Object-oriented principles</h2>
+    <h3>Complexity</h3>
+    <ul class="build">
+        <li>Large projects</li>
+        <li>Large complexity</li>
+        <li>Strong coupling</li>
+    </ul>
+  </section>
+
+  <section class="fill">
+    <h3>Small project</h3>
+    <img src="images/dog-house.jpg" alt="" />
+  </section>
+
+  <section class="fill">
+    <h3>Real project</h3>
+    <img src="images/building-plan.jpg" alt="" />
+  </section>
+
+  <section>
+    <h3>4 principles</h3>
+    <ul class="build">
+        <li>Inheritance</li>
+        <li>Polymorphism</li>
+        <li>Abstraction</li>
+        <li>Encapsulation (Data-hiding)</li>
+    </ul>
+    <br />
+    <h4>Additional principles</h4>
+    <ul class="build" style="font-style: italic;">
+        <li>GRASP</li>
+        <li>SOLID</li>
+    </ul>
+  </section>
+
+  <section class="fill">
+    <h3>Inheritance</h3>
+    <img src="images/inheritance.jpg" alt="" />
+    <ul class="build">
+        <li>Code reuse</li>
+    </ul>
+  </section>
+
+ <section>
+    <h3>Polymorphism</h3>
+    <ul class="build">
+        <li>Overloading</li>
+    </ul>
+    <div style="text-align: center;">
+        <img src="images/polymorphism.gif" alt="" />
+    </div>
+ </section>
+
+ <section>
+    <h3>Abstraction</h3>
+    <br />
+    <img src="images/spacecraft.jpg" alt="" />
+ </section>
+
+ <section class="smaller">
+    <h3>Encapsulation</h3>
+    <q>
+      Abstraction and encapsulation are complementary concepts: abstraction focuses on the observable behavior of an object... encapsulation focuses upon the implementation that gives rise to this behavior...
+    </q>
+    <div class='author'>
+      Grady Booch
+    </div>
+ </section>
+
+  <section class="fill">
+    <h3>Design patterns</h3>
+    <ul>
+        <li>Common problems</li>
+        <li>Good approaches</li>
+        <li>Balance</li>
+    </ul>
+  </section>
+
+ <section>
+    <h2>Observer</h2>
+    <h3>Problem</h3>
+    <ul class="build">
+        <li>Managing state-change notifications</li>
+        <li>Minimum coupling</li>
+        <li>Managing event data (pull/push)</li>
+    </ul>
+ </section>
+
+ <section>
+    <h3>Pull Observer</h3>
+    <img src="images/observer.gif" alt="" style="margin: 30px; width:80%;" />
+ </section>
+
+ <section>
+    <h2>Proxy</h2>
+    <h3>Problem</h3>
+    <ul class="build">
+        <li>Remote proxy (cross-domain requests)</li>
+        <li>Restriction proxy</li>
+        <li>Etc...</li>
+    </ul>
+ </section>
+
+<section>
+    <h3>Proxy</h3>
+    <img src="images/proxy.png" alt="" style="margin: 30px; width: 80%;" />
+</section>
+
+<section>
+    <h3>Adapter</h3>
+    <h2>Problem</h2>
+    <ul class="build">
+        <li>JavaScript library (jQuery, MooTools, Dojo, ExtJS...)</li>
+        <li>Independent application</li>
+        <li>Dynamically changing the library</li>
+    </ul>
+</section>
+
+<section>
+    <h3>Adapter</h3>
+    <img src="images/adapter.png" alt="" style="margin: 30px; width: 80%;" />
+</section>
+
+<section>
+    <h2>Variable scope</h2>
+    <ul class="build">
+      <li>Local variables</li>
+      <li>Global variables</li>
+      <li>Instance variables</li>
+    </ul>
+</section>
+
+<section>
+  <h2>Namespace pattern</h2>
+  <h3>Problem</h3>
+  <ul class="build">
+      <li>Organizing the source code</li>
+      <li>Holding logical groups of unique identifiers or symbols</li>
+      <li>Dealing with name collisions</li>
+  </ul>
+  <ul class="build">
+      <li>Java - packages</li>
+      <li>C++, C# - namespaces</li>
+      <li>JavaScript - ?!</li>
+  </ul>
+</section>
+
+<section>
+  <h3>JavaScript objects</h3><br />
+  They have
+  <ul class="build">
+      <li>Properties - objects</li>
+      <li>Methods - objects</li>
+  </ul>
+</section>
+
+<section>
+  <h3>The object literal</h3>
+  <pre><code>
+var person = {
+ talk: 'Foo',
+ action: function () {
+     console.log('I\'m ' + this.name);
+ }
+};
+  </code></pre>
+  <ul class="build green">
+      <li>Less code</li>
+      <li>Almost 2x faster (than using new)</li>
+  </ul>
+  <ul class="build red">
+      <li>Harder to understand</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Nesting objects</h3>
+  <pre><code>
+      var foo = {
+          bar: {
+              foobar: { prop: 'I\'m inside foobar!' }
+          }
+      };
+  </code></pre>
+</section>
+
+<section>
+  <h3>Namespace function</h3>
+  <pre><code>
+function namespace(namespaceString) {
+  var parts = namespaceString.split('.'),
+      parent = window,
+      currentPart = '';
+
+  for(var i = 0, length = parts.length; i &lt; length; i++) {
+      currentPart = parts[i];
+      parent[currentPart] = parent[currentPart] || {};
+      parent = parent[currentPart];
+  }
+
+  return parent;
+}
+  </code></pre>
+</section>
+
+<section>
+  <h3>Sample usage</h3>
+  <pre><code>
+(function () {
+  var stream = namespace('com.appblast.stream');
+
+  stream.xhr = function () {
+      //implementation
+  };
+
+  stream.websocket = function () {
+      //implementation
+  };
+}());
+  </code></pre>
+</section>
+
+<section>
+   <h2>Module pattern</h2>
+   <h3>Problem</h3>
+   <ul class="build">
+      <li>Data hiding</li>
+      <li>Encapsulation</li>
+      <li>Abstraction</li>
+      <li>Complexity</li>
+   </ul>
+</section>
+
+<section>
+  <h3>Creating "classes"</h3>
+  <pre><code>
+function Person(name) {
+  this.name = name;
+  this.talk = function () {
+      return this.name + " is talking!";
+  }
+}
+var person = new Person('Foo');
+console.log(person.name); // "Foo"
+console.log(person.talk()); // "Foo is talking!"
+  </code></pre>
+  <ul class="build green">
+      <li>A basic encapsulation</li>
+      <li>Abstraction</li>
+  </ul>
+  <ul class="build red">
+      <li>No data hiding</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Module pattern</h3>
+  <pre><code>
+var module = (function () {
+ function privateFoo() {
+     console.log('The private foo.');
+ }
+ return {
+     publicFoo: function () {
+         privateFoo();
+         console.log('The public foo.');
+     }
+ };
+}());
+module.publicFoo(); //'The private foo.'
+                 //'The public foo.'
+module.privateFoo(); //TypeError: Object #&lt;Object&gt;
+                      // has no method 'privateFoo'
+  </code></pre>
+</section>
+
+<section>
+    <h3>Example</h3>
+    <pre><code>
+var website = (function () {
+    var title = 'Default title';
+    return {
+        setTitle: function (t) {
+            title = t;
+            document.title = title;
+        },
+        getTitle: function () {
+            return title;
+        }
+    };
+}());
+website.setTitle('Sample title');
+console.log(website.getTitle()); //'Sample title'
+    </code></pre>
+</section>
+
+<section>
+    <h3>Module pattern - Variation (1)</h3>
+    <pre><code>
+var module = (function () {
+    function private() {
+        console.log('Private method');
+    }
+    function public() {
+        console.log('Public method');
+    }
+    return {
+        public: public
+    };
+}());
+    </code></pre>
+</section>
+
+<section class="smaller">
+    <pre><code>
+        var module = (function () {
+            function public() {
+                private();
+            }
+            function anotherPublic() {
+                console.log('anotherPublic');
+            }
+            function private() {
+                anotherPublic();
+            }
+            return {
+                public: public,
+                anotherPublic: anotherPublic
+            };
+        }());
+
+        module.public(); // 'anotherPublic'
+        module.anotherPublic = function () {
+            console.log('Brand new public');
+        };
+        module.public(); // 'anotherPublic'
+
+    </code></pre>
+</section>
+
+<section>
+    <h2>AMD and CommonJS</h2>
+</section>
+
+<section>
+    <h3>CommonJS</h3>
+    <p>Development of independent pieces of JavaScript which can be easily reused.</p>
+    <div>Globals:</div>
+    <ul>
+        <li>exports</li>
+        <li>require</li>
+    </ul>
+</section>
+
+<section>
+    <h3>CommonJS exports</h3>
+    <p>By adding properties to the <strong>exports</strong> object we specify what we want to make available for other modules.</p>
+    <pre><code><code>
+var lib = require('./utils/lib'), //relative
+    fooLib = require('fooLib');
+
+lib.doAwesomeThing();
+fooLib();
+
+function bar() {
+  //body
+}
+
+exports.bar = bar;
+    </code></code></pre>
+</section>
+
+<section>
+    <h3>CommonJS exports</h3>
+    <pre><code><code>
+//Human.js
+function Human(name) {
+  this.name = name;
+}
+exports.Human = Human;
+
+//app.js
+var Human = require('./Human.js').Human;
+
+var p = new Human('foo');
+console.log(p.name); //'foo'
+    </code></code></pre>
+</section>
+
+<section>
+    <h3>CommonJS</h3>
+    <p>Typical usage of CommonJS is in Node.js. The modules are loaded synchronously so we don't need additional callbacks or promises.</p>
+</section>
+
+<section>
+    <h3><b>A</b>synchronous <b>M</b>odule <b>D</b>efinition</h3>
+    <ul>
+        <li>Definition of JavaScript modules for the Web (browser first approach)</li>
+        <li>Dojo - XHR + eval</li>
+        <li>Allows asynchronous loading of the modules</li>
+        <li>Without coupling between the source code and module represenation</li>
+        <li><a href="https://groups.google.com/forum/#!forum/amd-implement">Mailing list</a></li>
+    </ul>
+</section>
+
+<section>
+    <h3>Module definition</h3>
+    <pre><code><code>
+define(
+    module_id /* optional */,
+    [dependencies] /* optional */,
+    definition function /* function for instantiating the module or object */
+);
+    </code></code></pre>
+</section>
+
+<section>
+    <h3>Special dependencies</h3>
+    <ul>
+        <li>require</li>
+        <li>exports</li>
+        <li>module</li>
+    </ul>
+    <p class="fragment">The default arguments which the factory function accepts</p>
+</section>
+
+<section>
+    <h3>Dependencies</h3>
+    <ul>
+        <li>Can be specified with relative indentifiers</li>
+        <li>Their resolution starts depending on their order in the dependencies array</li>
+        <li>The order in the dependencies array shows the order in which they will be passed to the factory</li>
+    </ul>
+</section>
+
+<section>
+    <h3>Example</h3>
+    <pre><code><code>
+ define(["alpha"], function (alpha) {
+     return {
+       verb: function(){
+         return alpha.verb() + 2;
+       }
+     };
+ });
+    </code></code></pre>
+</section>
+
+<section>
+    <h3>Example</h3>
+    <pre><code><code>
+ define("alpha", ["require", "exports", "../beta"], function (require, exports, beta) {
+     exports.verb = function() {
+         return beta.verb();
+     }
+ });
+    </code></code></pre>
+</section>
+
+<section>
+    <h3>Example</h3>
+<pre><code><code>
+ define({
+   add: function(x, y){
+     return x + y;
+   }
+ });
+ </code></code></pre>
+</section>
+
+<section>
+    <h3>Example (CommonJS in AMD)</h3>
+    <pre><code><code>
+ define(function (require, exports, module) {
+   var a = require('a'),
+       b = require('b');
+
+   exports.action = function () {};
+ });
+    </code></code></pre>
+</section>
+
+<section>
+    <h2>Publish/subscribe</h2>
+    <h3>Problem</h3>
+    <ul class="build">
+        <li>Loose coupling</li>
+        <li>Easy reuse</li>
+        <li>Maintainability</li>
+    </ul>
+</section>
+
+<section class="smaller">
+    <h3>Solution</h3>
+    <pre><code>
+        var pubsub = {};
+        (function(q) {
+          var topics = {};
+          q.publish = function (topic, args) {
+            if (!topics[topic]) {
+              return false;
+            }
+            var subscribers = topics[topic],
+                len = subscribers ? subscribers.length : 0;
+            while (len--) {
+              subscribers[len].call(null, topic, args);
+            }
+            return this;
+          };
+          q.subscribe = function (topic, func) {
+            if (!topics[topic]) {
+              topics[topic] = [];
+            }
+            topics[topic].push(func);
+            return this;
+          };
+        }(pubsub));
+</code></pre>
+</section>
+
+<section>
+    <h2>Sample architecture</h2>
+    <h3>Problem</h3>
+    <ul class="build">
+        <li>Dealing with complexity</li>
+        <li>Easy replacement of the components</li>
+        <li>Reusability</li>
+    </ul>
+</section>
+
+<section>
+    <h3>The Core</h3>
+    <h4>Adapter</h4>
+    <ul class="build">
+        <li>Standardized interface for DOM, AJAX..whatever library.</li>
+        <li>Providing this interface to the "Sandbox"</li>
+    </ul>
+</section>
+
+<section>
+    <pre><code>
+        App.core.dom = {
+            setWidth: function (elem, width) {
+                $(elem).width(width);
+            },
+            getWidth: function (elem) {
+                return $(elem).width();
+            },
+            getOffset: function (elem) {
+                return $(elem).offset();
+            }
+        };
+        App.core.ajax = {
+            get: function (url, data) {
+                $.ajax({
+                    type: 'get',
+                    url: url,
+                    data: data
+                });
+            }
+        };
+    </code></pre>
+</section>
+
+<section>
+    <h3>The Sandbox</h3>
+    <h4>Pub-sub/Proxy</h4>
+    <ul class="build">
+        <li>Providing basic API for the modules</li>
+        <li>Modules communicate via the Sandbox</li>
+        <li>Can provide some form of restriction if necessary</li>
+    </ul>
+</section>
+
+<section class="smaller">
+    <pre><code>
+App.sandbox = (function (core) {
+    var modules = {},,
+        topics = {},    //publish/subscribe
+        //...
+        moduleInterface = {
+            dom: core.dom,
+            ajax: core.ajax,
+            publish: publish,
+            subscribe: subscribe
+        };
+        function start(moduleId) {
+            var module = modules[moduleId];
+            if (module !== undefined &amp;&amp; typeof module.init === 'function') {
+                modules.init.call(null, moduleInterface);
+            }
+        }
+    return {
+        register: register, //register module
+        start: start,
+        stop: stop
+    };
+}(App.core));
+    </code></pre>
+</section>
+
+<section>
+    <h3>Modules</h3>
+    <h4>The Module pattern</h4>
+    <ul class="build">
+        <li>Our building blocks</li>
+        <li>Do not access any globals!</li>
+        <li>Do not know for the other modules, just playing in the Sandbox</li>
+    </ul>
+</section>
+
+<section>
+    <pre><code>
+        App.sandbox.register('news', (function () {
+            function init(sandbox) {
+                addHandlers();
+                //...
+            }
+            function addHandlers() {
+                //...
+            }
+            return {
+                init: init
+            };
+        }());
+    </code></pre>
+</section>
+
+<section class="current">
+    <img style="width: 684px; height: 664px; margin-top: -40px; margin-left: 20px;" src="images/architecture.png" alt="" />
+</section>
+
+<section>
+    <iframe width="640" height="360" src="http://www.youtube.com/embed/vXjVFPosQHw?theme=light" frameborder="0"></iframe>
+</section>
+
+<section>
+    <h2>Sample architecture (+/-)</h2>
+    <ul class="build green">
+        <li>Simple to build</li>
+        <li>Encapsulation</li>
+        <li>Low coupling</li>
+        <li>Reusability</li>
+    </ul>
+    <ul class="build red">
+        <li>HARD for unit testing</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Implementations</h2>
+    <ul class="build">
+        <li>Aura.js</li>
+        <li>ScaleApp</li>
+        <li>Kernel.js</li>
+        <li>Terrifically</li>
+        <li>Hydra.js</li>
+        <li>Yahoo projects</li>
+    </ul>
+</section>
+
+<section>
+  <h3>Best practices</h3>
+  <ul class="build">
+    <li>Always use === instead of ==</li>
+    <li>Do not omit var</li>
+    <li>Use a single var keyword for declaring multiple variables</li>
+    <li>Do not pollute the global namespace</li>
+    <li>Do not define functions in a loops</li>
+    <li>Do not use eval</li>
+    <li>Do not pass strings to setInterval or setTimeout</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Best practices (2)</h3>
+  <ul>
+    <li>Use [] and {} instead of new Array, new Object</li>
+    <li>Use the radix parameter of parseInt</li>
+    <li>Always use semicolons</li>
+    <li>Use IIFE</li>
+    <li>Use JSLint or JSHint</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Useful resources</h3>
+  <ul class="build">
+    <li><a href="http://www.amazon.com/Object-Oriented-JavaScript-ebook/dp/B0057UNEJC">Object-Oriented JavaScript</a></li>
+    <li><a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript: The Good Parts</a></li>
+    <li><a href="http://shop.oreilly.com/product/9780596806767.do">JavaScript Patterns</a></li>
+    <li><a href="addyosmani.com/resources/essentialjsdesignpatterns/book/">Learning JavaScript Design Patterns
+</a></li>
+    <li><a href="http://www.jslint.com/">JSLint</a></li>
+    <li><a href="http://jshint.com/">JSHint</a></li>
+    <li><a href="http://kangax.github.io/es5-compat-table/">ES5 compatibility table</a></li>
+  </ul>
+</section>
+
+<section>
+    <h1>Thank you!</h1>
+</section>
