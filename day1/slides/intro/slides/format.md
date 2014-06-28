@@ -2,12 +2,10 @@
 
 "Reverse classroom"
 
-### Home
+* Home
+  * Read
+  * Homeworks
 
-* Read
-* Homeworks
-
-### Classes
-
-* Ask questions
-* Solve excercises
+* Classes
+  * Ask questions
+  * Solve excercises
