@@ -1,0 +1,7 @@
+{
+  "name": "day-1",
+  "version": "0.0.0",
+  "dependencies": {
+    "reveal.js": "~2.6.1"
+  }
+}
