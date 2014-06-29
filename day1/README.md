@@ -1,5 +1,7 @@
 # Before the class
 
+Take a look at these links before the class on Monday afternoon:
+
 1. `/slides`
 2. [Bower](http://bower.io/)
 3. [Constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript)
