@@ -1,0 +1,9 @@
+<h2>Controllers Example</h2>
+<pre lang="javascript"><code>function MyController($scope) {
+  $scope.buttonText = 'Click me to change foo!';
+  $scope.foo = 42;
+  $scope.changeFoo = function () {
+    $scope.foo += 1;
+    alert('Foo changed');
+  };
+}</code></pre>

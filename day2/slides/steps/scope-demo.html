@@ -1,0 +1,22 @@
+<h2>Scope Example</h2>
+
+<div class="small">
+  <pre lang="html"><code>&#x3C;div ng-controller=&#x22;BaseCtrl&#x22;&#x3E;
+  &#x3C;div id=&#x22;child&#x22; ng-controller=&#x22;ChildCtrl&#x22;&#x3E;
+    &#x3C;button id=&#x22;parent-method&#x22; ng-click=&#x22;foo()&#x22;&#x3E;Parent method&#x3C;/button&#x3E;
+    &#x3C;button ng-click=&#x22;bar()&#x22;&#x3E;Child method&#x3C;/button&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;</code></pre>
+
+  <pre lang="javascript"><code>function BaseCtrl($scope) {
+  $scope.foo = function () {
+    alert('Base foo');
+  };
+}
+
+function ChildCtrl($scope) {
+  $scope.bar = function () {
+    alert('Child bar');
+  };
+}</code></pre>
+</div>

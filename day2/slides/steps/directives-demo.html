@@ -1,0 +1,24 @@
+<h2>Directives Example</h2>
+
+<div class="small">
+  <pre lang="JavaScript"><code>myModule.directive('alertButton', function () {
+  return {
+    template: '&#x3C;button ng-transclude&#x3E;&#x3C;/button&#x3E;',
+    scope: {
+      content: '@'
+    },
+    replace: true,
+    restrict: 'E',
+    transclude: true,
+    link: function (scope, el) {
+      el.click(function () {
+        alert(scope.content);
+      });
+    }
+  };
+});</code></pre>
+
+  <pre lang="html">
+  <code> &#x3C;alert-button content=&#x22;42&#x22;&#x3E;Click me&#x3C;/alert-button&#x3E;</code>
+  </pre>
+</div>

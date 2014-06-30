@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <style>
+    ul {
+      list-style: none;
+    }
+    .completed {
+      text-decoration: line-through;
+    }
+    body {
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <label for="current-todo">
+    Todo:<input type="text">
+  </label>
+  <button class="btn btn-primary">Add</button>
+  <ul>
+    <!-- ng-cloack vs ng-bind -->
+    <!-- duplications -->
+    <li>
+      <label for="complete-input">
+        <input type="checkbox" name="complete-input">
+        <span></span>
+      </label>
+      <a href="#">Delete</a>
+    </li>
+  </ul>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="src/TodoCtrl.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<h2>Runtime</h2>
+
+<section style="font-size: 0.7em">
+Once the DOM tree is being compiled it is turned into a "dynamical DOM tree", i.e. the DOM elements have attached event listeners and different AngularJS expressions are being watcher.
+
+When external or internal action against the application happens the "digest" loop makes sure all watched expressions are "clean" (i.e. evaluates them and makes sure they are equal to their previous values).
+</section>
