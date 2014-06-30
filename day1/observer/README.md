@@ -39,5 +39,5 @@ Instructions about the required APIs are available in `LogObserver.js` and `Mail
 
 Inside `index.js` create new instances of the both observers and set the appropriate configuration. Add the observers to a new object, instance of `PostsCollection`.
 
-If everything went well, when you insta
+If the implementation is correct, when you add new post through the web interface or `addPost` method, the application should create new file in the `logs` directory and email with the title of the article should be sent, to the destination you've set.
 
