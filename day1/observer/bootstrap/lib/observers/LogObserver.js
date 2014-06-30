@@ -1,4 +1,4 @@
-/* global module: false, require: false */
+/* global module, require */
 
 var Observer = require('./Observer'),
     // use fs.writeFileSync(fileName, content)

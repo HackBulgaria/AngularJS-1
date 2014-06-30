@@ -1,5 +1,5 @@
-/* global navigator: false, document: false, URL: false,
-alert: false, setInterval: false */
+/* global navigator, document, URL,
+alert, setInterval */
 
 function Video(video, canvas) {
   'use strict';

@@ -1,4 +1,4 @@
-/* global require: false, __dirname: false, console: false */
+/* global require, __dirname, console */
 
 var MailObserver = require('./lib/observers/MailObserver'),
     LogObserver = require('./lib/observers/LogObserver'),

@@ -1,5 +1,5 @@
-/* global document: false,
-location: false, XMLHttpRequest: false, JSON: false */
+/* global document,
+location, XMLHttpRequest, JSON */
 
 (function () {
 

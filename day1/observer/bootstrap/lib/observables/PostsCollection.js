@@ -1,4 +1,4 @@
-/* global require: false, module: false */
+/* global require, module */
 
 var Observable = require('./Observable');
 

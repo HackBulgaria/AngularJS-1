@@ -1,4 +1,4 @@
-/* global module: false */
+/* global module */
 
 function Observer() {}
 

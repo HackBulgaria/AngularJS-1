@@ -1,4 +1,4 @@
-/* global require: false, module: false */
+/* global require, module */
 
 var Observer = require('./Observer'),
     // more information about the API at
