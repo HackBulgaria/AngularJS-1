@@ -14,7 +14,7 @@ Function.prototype.times = function (n) {
 Array.prototype.unique = function () {
   var arr = this;
   return this.filter(function (el, idx) {
-    return arr.lastIndexOf(el) === idx;
+    return arr.indexOf(el) === idx && arr.lastIndexOf(el) === idx;
   });
 };
 
