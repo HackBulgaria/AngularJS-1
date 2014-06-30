@@ -1,7 +1,7 @@
 ## Usage
 
 ```
-bower install package-name
+bower install package-name (--save, --save-dev)
 ```
 ```
 bower install package-name#version
