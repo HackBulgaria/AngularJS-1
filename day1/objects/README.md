@@ -13,5 +13,5 @@ This means that `data[i]` will be the red value, `data[i + 1]` will be the green
 
 Set the red, green and blue values to be equal to the result of the expression `0.2126 * red + 0.7152 * green + 0.0722 * blue`.
 
-You may need to make slight modification in the `app.js` file in order to add filter using the method `addVideo` of the `Video` instances.
+You may need to make slight modification in the `app.js` file in order to add filter using the method `addFilter` of the `Video` instances.
 
