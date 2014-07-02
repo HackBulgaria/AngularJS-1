@@ -17,7 +17,7 @@ Our framework is going to support directives, two-way data-binding, services, co
 
 0. Define property of type object, which is called `_providers`
 
-0. Define a property called `_cache`. It should contains a property with value `new Scope` (we are going to implement the `Scope` in later section, for now you can comment the statement).
+0. Define a property called `_cache`. It should contains a property with value `new Scope` and key `rootScope` (we are going to implement the `Scope` in later section, for now you can comment the statement).
 
 0. Define a method called `annotate`, which accepts a function and returns an array of its arguments' names.
 
