@@ -1,3 +1,23 @@
+# Стартиране на слайдовете
+
+За да стартирате слайдовете трябва да имате инсталиран node.js, npm и grunt.
+За да инсталирате grunt използвайте:
+
+```bash
+npm install -g grunt-cli
+npm install -g grunt
+```
+
+За да стартирате презентация:
+
+```bash
+cd slides_folder
+# Required only once
+npm install
+grunt server
+```
+Изпълнението на последната команда трябва да отвори браузър с url `localhost:\d+` (например localhost:9000).
+
 # Предварителни изисквания
 
 1. Добро владеене на HTML и CSS.
