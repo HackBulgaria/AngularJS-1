@@ -13,7 +13,7 @@ Our framework is going to support directives, two-way data-binding, services, co
   * `service` - used for defining services.
   * `annotate` - used for getting array of the names of the dependencies of given "provider" (i.e. service, controller or directive).
   * `invoke` - used for invoking services (i.e. resolving their dependencies and calling the factory method).
-  * `Provider` should have "static" properties called `DIRECTIVES_SUFFIX` and `CONTROLLERS_SUFFIX` with values "Directive" and "Controller".
+  * `Provider` should have properties called `DIRECTIVES_SUFFIX` and `CONTROLLERS_SUFFIX` with values "Directive" and "Controller".
 
 0. Define property of type object, which is called `_providers`
 
