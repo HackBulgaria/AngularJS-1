@@ -238,11 +238,25 @@
         }
     },
     {
+        "uri": "provider.html",
+        "id": "provider",
+        "class": "step",
+        "data": {
+            "x": 52000,
+            "y": 0,
+            "z": 220,
+            "scale": 1,
+            "rotate-x": 0,
+            "rotate-y": 0,
+            "rotate-z": 90
+        }
+    },
+    {
         "uri": "bootstrap.html",
         "id": "bootstrap",
         "class": "step",
         "data": {
-            "x": 51000,
+            "x": 54000,
             "y": 0,
             "z": 220,
             "scale": 1,
@@ -256,7 +270,7 @@
         "id": "runtime",
         "class": "step",
         "data": {
-            "x": 54000,
+            "x": 57000,
             "y": 0,
             "z": 220,
             "scale": 1,
@@ -270,7 +284,7 @@
         "id": "scope-api",
         "class": "step",
         "data": {
-            "x": 57000,
+            "x": 60000,
             "y": 0,
             "z": 220,
             "scale": 1,
@@ -284,7 +298,7 @@
         "id": "provider-api",
         "class": "step",
         "data": {
-            "x": 60000,
+            "x": 63000,
             "y": 0,
             "z": 220,
             "scale": 1,
@@ -298,7 +312,7 @@
         "id": "domcompiler",
         "class": "step",
         "data": {
-            "x": 63000,
+            "x": 66000,
             "y": 0,
             "z": 220,
             "scale": 1,
@@ -312,7 +326,7 @@
         "id": "ngl-bind",
         "class": "step",
         "data": {
-            "x": 66000,
+            "x": 69000,
             "y": 0,
             "z": 220,
             "scale": 1,
@@ -326,7 +340,7 @@
         "id": "ngl-model",
         "class": "step",
         "data": {
-            "x": 69000,
+            "x": 71000,
             "y": 0,
             "z": 220,
             "scale": 1,
@@ -340,7 +354,7 @@
         "id": "timeout",
         "class": "step",
         "data": {
-            "x": 72000,
+            "x": 74000,
             "y": 0,
             "z": 220,
             "scale": 1,
@@ -354,7 +368,7 @@
         "id": "thank",
         "class": "step",
         "data": {
-            "x": 75000,
+            "x": 77000,
             "y": 0,
             "z": 220,
             "scale": 1,
