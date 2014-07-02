@@ -25,7 +25,7 @@ Our framework is going to support directives, two-way data-binding, services, co
 
 0. Define method called `invoke`. It should accept two arguments - `fn` (factory method) and `locals` (local dependencies). Using `annotate` and `get` resolve all dependencies of the current factory method (`fn`) and invoke the factory method. Return the result of the invocation.
 
-0. Add method called `_register`. `_register` should accept two arguments - `fn` (factory method of the provider) and `name` (name of the provider). It should add new property of the `_providers` hash map with name the first argument passed to the method and value a function, which returns the factory method of the provider.
+0. Add method called `_register`. `_register` should accept two arguments - `name` (name of the provider) and `fn` (factory method of the provider). It should add new property of the `_providers` hash map with name the first argument passed to the method and value a function, which returns the factory method of the provider.
 
 0. Add methods called `directive`, `controller` and `service`. They should accept two arguments - `name` (name of the provider) and `fn` (factory method). They should call `_register` with appropriate name for the provider (i.e. with special suffix for `directive` and `controller` - `DIRECTIVES_SUFFIX`, `CONTROLLERS_SUFFIX`) and the factory method, which is passed as second argument.
 
