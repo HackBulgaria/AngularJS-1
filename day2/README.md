@@ -14,3 +14,5 @@ Note that the first argument of each callback should be an object with the follo
 - `stopPropagation` - a boolean flag, which when set to `false` will stop the event propagation
 
 The second argument of the callbacks should be the data passed to `$broadcast` or `$emit`.
+
+In step 4. you're going to implement "Chain of Responsibilities", for further information check the following [wiki article](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern).
