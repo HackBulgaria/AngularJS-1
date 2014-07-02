@@ -4,6 +4,32 @@ In this exercise we are going to create a lightweight implementation of AngularJ
 
 Our framework is going to support directives, two-way data-binding, services, controllers...and even more!
 
+## Provider
+
+0. Create object literal called `Provider`. The provider object should has the following public methods:
+  * `get` - used for getting services.
+  * `directive` - used for defining directives.
+  * `controller` - used for defining controllers.
+  * `service` - used for defining services.
+  * `annotate` - used for getting array of the names of the dependencies of given "provider" (i.e. service, controller or directive).
+  * `invoke` - used for invoking services (i.e. resolving their dependencies and calling the factory method).
+  * `Provider` should have "static" properties called `DIRECTIVES_SUFFIX` and `CONTROLLERS_SUFFIX` with values "Directive" and "Controller".
+
+0. Define property of type object, which is called `_providers`
+
+0. Define a property called `_cache`. It should contains a property with value `new Scope` (we are going to implement the `Scope` in later section, for now you can comment the statement).
+
+0. Define a method called `annotate`, which accepts a function and returns an array of its arguments' names.
+
+0. Define a method called `get`. It should accept arguments called `name` (name of the provider) and `locals` (local dependencies). `get` should return service with name `name`, if it is already cached (i.e. property of `this._cache`), otherwise it should call its factory method with the method `this.invoke` and cache the result. Do not forget to pass the local dependencies to `this.invoke`.
+
+0. Define method called `invoke`. It should accept two arguments - `fn` (factory method) and `locals` (local dependencies). Using `annotate` and `get` resolve all dependencies of the current factory method (`fn`) and invoke the factory method. Return the result of the invocation.
+
+0. Add method called `_register`. `_register` should accept two arguments - `fn` (factory method of the provider) and `name` (name of the provider). It should add new property of the `_providers` hash map with name the first argument passed to the method and value a function, which returns the factory method of the provider.
+
+0. Add methods called `directive`, `controller` and `service`. They should accept two arguments - `name` (name of the provider) and `fn` (factory method). They should call `_register` with appropriate name for the provider (i.e. with special suffix for `directive` and `controller` - `DIRECTIVES_SUFFIX`, `CONTROLLERS_SUFFIX`) and the factory method, which is passed as second argument.
+
+
 ## Scope
 
 0. Define a constructor function called `Scope`. It should initialize the properties:
@@ -25,31 +51,6 @@ Our framework is going to support directives, two-way data-binding, services, co
 
 0. Define method called `$digest`. Inside the body of the method a loop should iterate over the watchers (`$$watchers`) until all watchers are "clean" (i.e. their current value is equals to their last value - `Utils.equals`). In the end of the method invocation it should be called recursively for all children of the method.
 
-
-## Provider
-
-0. Create object literal called `Provider`. The provider object should has the following public methods:
-  * `get` - used for getting services.
-  * `directive` - used for defining directives.
-  * `controller` - used for defining controllers.
-  * `service` - used for defining services.
-  * `annotate` - used for getting array of the names of the dependencies of given "provider" (i.e. service, controller or directive).
-  * `invoke` - used for invoking services (i.e. resolving their dependencies and calling the factory method).
-  * `Provider` should have "static" properties called `DIRECTIVES_SUFFIX` and `CONTROLLERS_SUFFIX` with values "Directive" and "Controller".
-
-0. Define property of type object, which is called `_providers`
-
-0. Define a property called `_cache`. It should contains a property with value `new Scope`.
-
-0. Define a method called `annotate`, which accepts a function and returns an array of its arguments' names.
-
-0. Define a method called `get`. It should accept arguments called `name` (name of the provider) and `locals` (local dependencies). `get` should return service with name `name`, if it is already cached (i.e. property of `this._cache`), otherwise it should call its factory method with the method `this.invoke` and cache the result. Do not forget to pass the local dependencies to `this.invoke`.
-
-0. Define method called `invoke`. It should accept two arguments - `fn` (factory method) and `locals` (local dependencies). Using `annotate` and `get` resolve all dependencies of the current factory method (`fn`) and invoke the factory method. Return the result of the invocation.
-
-0. Add method called `_register`. `_register` should accept two arguments - `fn` (factory method of the provider) and `name` (name of the provider). It should add new property of the `_providers` hash map with name the first argument passed to the method and value a function, which returns the factory method of the provider.
-
-0. Add methods called `directive`, `controller` and `service`. They should accept two arguments - `name` (name of the provider) and `fn` (factory method). They should call `_register` with appropriate name for the provider (i.e. with special suffix for `directive` and `controller` - `DIRECTIVES_SUFFIX`, `CONTROLLERS_SUFFIX`) and the factory method, which is passed as second argument.
 
 ## DOMCompiler
 
