@@ -37,7 +37,7 @@ Our framework is going to support directives, two-way data-binding, services, co
   * `$$children` - an empty array.
   * `$parent` - it should accept the value of a parameter called `parent` passed to the constructor function.
   * `$id` - it should accept the value of a parameter called `id` passed to the constructor function or `0` if the passed parameter is `undefined`.
-  * `Scope` should have "static" property called `counter`, with initial value `0`.
+  * `Scope` should have a "static" property called `counter`, with initial value `0`.
 0. Define method called `$eval`. It should **evaluate expressions in the context of the current scope**. The expressions, which would be evaluated are:
   * Method invocation (i.e. `foo()`)
   * Function invocation, i.e. the value of the expression passed to `$eval` will be a function, which should be invoked in the context of the scope.
@@ -49,7 +49,9 @@ Our framework is going to support directives, two-way data-binding, services, co
 
 0. Define method called `$destroy`. It should remove the current scope from the `$$children` array of its parent.
 
-0. Define method called `$digest`. Inside the body of the method a loop should iterate over the watchers (`$$watchers`) until all watchers are "clean" (i.e. their current value is equals to their last value - `Utils.equals`). In the end of the method invocation it should be called recursively for all children of the method.
+0. Define method called `$digest`. Inside the body of the method a loop should iterate over the watchers (`$$watchers`) until all watchers are "clean" (i.e. their current value is equals to their last value - `Utils.equals`). In the end of the method invocation it should be called recursively for all children of the method. If any of the values of the watchers is found dirty, the `fn` (i.e. the observer associated with the current watcher), should be invoked with arguments:
+  * the current value of the watcher expression
+  * the previous value of the watcher expression
 
 
 ## DOMCompiler
