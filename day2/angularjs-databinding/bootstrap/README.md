@@ -21,11 +21,11 @@ Our framework is going to support directives, two-way data-binding, services, co
 
 0. Define a method called `annotate`, which accepts a function and returns an array of its arguments' names.
 
-0. Define a method called `get`. It should accept arguments called `name` (name of the provider) and `locals` (local dependencies). `get` should return service with name `name`, if it is already cached (i.e. property of `this._cache`), otherwise it should call its factory method with the method `this.invoke` and cache the result. Do not forget to pass the local dependencies to `this.invoke`.
+0. Add method called `_register`. `_register` should accept two arguments - `name` (name of the provider) and `fn` (factory method of the provider). It should add new property of the `_providers` hash map with key the first argument passed to the method and value `fn`..
 
-0. Define method called `invoke`. It should accept two arguments - `fn` (factory method) and `locals` (local dependencies). Using `annotate` and `get` resolve all dependencies of the current factory method (`fn`) and invoke the factory method. Return the result of the invocation.
+0. Define a method called `get`. It should accept arguments called `name` (name of the provider) and `locals` (hash with local dependencies, the keys in the hash are the names of the dependencies and its values are the actual dependencies). `get` should return service with name `name`, if it is already cached (i.e. property of `this._cache`), otherwise it should call the factory method of the service (`this._provider[name]`) with the method `this.invoke` and cache the result. Do not forget to pass the local dependencies to `this.invoke`.
 
-0. Add method called `_register`. `_register` should accept two arguments - `name` (name of the provider) and `fn` (factory method of the provider). It should add new property of the `_providers` hash map with name the first argument passed to the method and value a function, which returns the factory method of the provider.
+0. Define method called `invoke`. It should accept two arguments - `fn` (factory method) and `locals` (local dependencies). Using `annotate` and `get` resolve all dependencies of the current factory method (`fn`) and invoke the factory method. Return the result of the invocation. Note that the dependencies could be located both in `locals` hash and 
 
 0. Add methods called `directive`, `controller` and `service`. They should accept two arguments - `name` (name of the provider) and `fn` (factory method). They should call `_register` with appropriate name for the provider (i.e. with special suffix for `directive` and `controller` - `DIRECTIVES_SUFFIX`, `CONTROLLERS_SUFFIX`) and the factory method, which is passed as second argument.
 
