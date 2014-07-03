@@ -60,11 +60,66 @@ Our framework is going to support directives, two-way data-binding, services, co
   * `bootstrap` - method responsible for doing the initial parsing of the DOM tree.
   * `compile` - method, which accepts a DOM element and scope and compiles the subtree, which has root the passed element, in the context of the passed scope.
 
-0. `bootstrap`, should invoke `compile` with the `$rootScope` and the root element of your application (there are no any restrictions of which will be your root element).
+0. `bootstrap` accepts a single argument - the root element of your application (for example `document.body`) and should invoke `compile` with the `$rootScope` and the root element of your application.
 
 0. `compile`, should apply the `link` function of all directives found on the current element and after that should invoke itself recursively with all children elements of the current element. Each registered directive must have two properties:
   * `scope` - a boolean property, which indicates that the current directive requires new scope to be created. **NOTE** that no more than one new scope per directive should be created (you should implement this restriction in the `DOMCompiler`).
   * `link` - a link function, which is responsible for encapsulating the directive's logic.
+
+## ngl-bind
+
+Define a directive called `ngl-bind`. When applied to given DOM element as attribute, it should accept an expression as value. When the value of the expression is being changed it should update the content of the element according to the new value of the expression. As initial value of the DOM element `ngl-bind` should set the initial value of the evaluation of the expression.
+
+## ngl-model
+
+Define a directive called `ngl-model`. When applied to given DOM input element as attribute, it should accept name of property of the scope associated with the directive. When the value of the scope's property is being changed this should reflect on the value of the input, once the value of the input is being changed by user interaction this should reflect on the value of the property (i.e. it should implement two-way data-binding).
+
+## ngl-controller
+
+Define a directive called `ngl-controller`. When applied to given DOM element as attribute, as value it should accept name of controller. The link function of this directive should create new controller with name the value of the attribute. The controller should be invoked with local dependencies hash containing property called `$scope` and value the new scope passed to the directive's link function (i.e. the directive should require creation of new scope).
+
+## ngl-repeat
+
+Create new directive called `ngl-repeat`. When applied to given DOM element as attribute it should accept expression in the format `item in items`, as value. When the scope associated with the directive has collection called `items` the directive should iterate over the items in the collection and reference each item in the collection as `item`. The current item should be accessible via the property `item`. For each item in the collection should be created new scope with property called `item`.
+
+Example:
+
+When compiled in the context of the scope:
+
+```JavaScript
+  $scope.items = [1, 2, 3];
+```
+the result of the compilation of the following markup:
+
+```HTML
+  <ul>
+    <li ngl-repeat="item in items">
+      <span ngl-bind="item"></span>
+    </li>
+  </ul>
+```
+should be:
+
+```HTML
+  <ul>
+    <li>
+      <span ngl-bind="item">1</span>
+    </li>
+    <li>
+      <span ngl-bind="item">2</span>
+    </li>
+    <li>
+      <span ngl-bind="item">3</span>
+    </li>
+  </ul>
+
+```
+
+## ngl-click
+
+Define directive called `ngl-click`. When applied to given DOM element as attribute it should accept expression, expressing function invocation (i.e. `foo()`).
+When the user clicks on element on which the `ngl-click` directive is applied the expression associated with the directive should be invoked in the context of the current scope.
+
 
 ### Sample directive
 
