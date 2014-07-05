@@ -1,0 +1,1 @@
+Finishing the AngularJS implementation from day2.
