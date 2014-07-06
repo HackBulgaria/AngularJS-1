@@ -4,10 +4,11 @@ Before the fourth day next week you should review the following articles:
 
 
 1. [Providers](https://docs.angularjs.org/guide/providers)
-2. [Services](https://docs.angularjs.org/guide/services)
-3. [Scope](https://docs.angularjs.org/guide/scope)
-4. [Decorator Design Pattern](https://en.wikipedia.org/wiki/Decorator_pattern)
-5. [Decorator Design Pattern JavaScript](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#decoratorpatternjavascript)
+2. [Controllers](https://docs.angularjs.org/guide/controller)
+3. [Services](https://docs.angularjs.org/guide/services)
+4. [Scope](https://docs.angularjs.org/guide/scope)
+5. [Decorator Design Pattern](https://en.wikipedia.org/wiki/Decorator_pattern)
+6. [Decorator Design Pattern JavaScript](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#decoratorpatternjavascript)
 
 # During the class
 
