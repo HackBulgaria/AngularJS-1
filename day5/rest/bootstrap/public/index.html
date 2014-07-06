@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="public/components/bootstrap/dist/css/bootstrap.css">
+  <style>
+  body {
+    padding: 30px;
+  }
+  </style>
+</head>
+<body data-ng-app="todo" data-ng-controller="TodoCtrl">
+  <label for="title-input">Todo title:
+    <input type="text" name="title-input" class="form-input">
+  </label>
+  <br>
+  <label for="until-date-input">Completed until:
+    <input type="date" class="form-input" name="until-date-input">
+    <input type="time" class="form-input" name="until-date-input">
+  </label>
+  <br>
+  <button class="btn btn-primary">Add</button>
+  <h3>Todo items</h3>
+  <ul>
+    <li>
+      <a href="#">{{todo.title}}</a>
+      <a href="#">[X]</a>
+    </li>
+  </ul>
+  <br>
+  <div id="todo-details">
+    <h3>Todo details for #{{todo.id}}</h3>
+    <div>Title: {{todo.title}}</div>
+    <div>Created: {{todo.created}}</div>
+    <div>Deadline: {{todo.until}}</div>
+  </div>
+  <script src="public/components/angular/angular.js"></script>
+  <script src="src/app.js"></script>
+  <script src="src/TodoCtrl.js"></script>
+  <script src="src/Todo.js"></script>
+</body>
+</html>
