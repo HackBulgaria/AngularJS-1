@@ -18,13 +18,12 @@ var Provider = Provider || (function () {
       this._register(name + Provider.DIRECTIVES_SUFFIX, fn);
     },
     controller: function (name, fn) {
-      this._register(name + Provider.CONTROLLERS_SUFFIX, fn);
+      this._register(name + Provider.CONTROLLERS_SUFFIX, function () {
+        return fn;
+      });
     },
     service: function (name, fn) {
       this._register(name, fn);
-    },
-    _register: function (name, service) {
-      this._providers[name] = service;
     },
     annotate: function (fn) {
       var res = fn.toString()
@@ -45,7 +44,10 @@ var Provider = Provider || (function () {
       return fn.apply(null, deps);
     },
     _cache: { $rootScope: new Scope() },
-    _providers: {}
+    _providers: {},
+    _register: function (name, service) {
+      this._providers[name] = service;
+    }
   };
 }());
 
