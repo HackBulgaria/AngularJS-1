@@ -66,6 +66,8 @@ Our framework is going to support directives, two-way data-binding, services, co
   * `scope` - a boolean property, which indicates that the current directive requires new scope to be created. **NOTE** that no more than one new scope per directive should be created (you should implement this restriction in the `DOMCompiler`).
   * `link` - a link function, which is responsible for encapsulating the directive's logic.
 
+**NOTE** Do not use third party libraries for the implementation of the `DOMCompiler`. For getting all children of given element use: `el.children`. For getting all attributes of given element use `el.attributes`. The returned collection from `el.attributes` will be of type `NamedNodeMap`, which means that you may need to cast it into an array, if necessary. You can access the name of the attribute by: `attr.name` and its value by `attr.value`.
+
 ## ngl-bind
 
 Define a directive called `ngl-bind`. When applied to given DOM element as attribute, it should accept an expression as value. When the value of the expression is being changed it should update the content of the element according to the new value of the expression. As initial value of the DOM element `ngl-bind` should set the initial value of the evaluation of the expression.
