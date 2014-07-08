@@ -1,0 +1,32 @@
+## Built-in services
+
+<ul>
+  <li>$anchorScroll</li>
+  <li>$animate</li>
+  <li>$cacheFactory</li>
+  <li>$compile</li>
+  <li>$controller</li>
+  <li>$document</li>
+  <li>$exceptionHandler</li>
+  <li>$parse</li>
+</ul>
+<ul>
+  <li>$filter</li>
+  <li>$http</li>
+  <li>$httpBackend</li>
+  <li>$interpolate</li>
+  <li>$interval</li>
+  <li>$locale</li>
+  <li>$location</li>
+  <li>$log</li>
+</ul>
+<ul>
+  <li>$q</li>
+  <li>$rootElement</li>
+  <li>$rootScope</li>
+  <li>$sce</li>
+  <li>$sceDelegate</li>
+  <li>$templateCache</li>
+  <li>$timeout</li>
+  <li>$window</li>
+</ul>
