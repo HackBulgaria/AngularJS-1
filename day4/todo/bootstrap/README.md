@@ -25,5 +25,5 @@ In this exercise we are going to create a simple TODO application with the follo
 * Create a global function called `TodoCtrl`
 * Require `$scope` as dependency of the controller
 * Attach empty array called `todos` to the scope
-* Add method called `add` to the scope, which adds new object literal to the `todos` array with appropriate `title` and `completed`. The `title` property should accept the value of the current todo list, while the value of the `completed` property should be `false`.
+* Add method called `add` to the scope, which adds new object literal to the `todos` array with appropriate `title` and `completed`. The `title` property should accept the value of the current todo item, while the value of the `completed` property should be `false`.
 * Add method called `remove`, which accepts index and removes the element with the specified index from the `todos` array
