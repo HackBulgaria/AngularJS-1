@@ -40,7 +40,7 @@ Inside the factory method of the service add local variable called `todos`. It s
   1. `title` - title of the todo
   2. `date` - date when the todo was created
   3. `id` - id of the current todo, this value could be equals to undefined.
-3. Define constructor function called `Todo`. It should add the following methods to it's prototype:
+3. The `Todo` constructor function, which should add the following methods to it's prototype:
   1. `save` - method responsible for saving the current todo item. This method should assign `id` to the current todo item, based on its index in the `todos` array and invoke `storage.put` with key `todos` and value the current value of the `todos` array (with the new item included).
   2. `destroy` - method responsible for removing the current todo item. It should remove it from the `todos` array and invoke `storage.put` with key `todos` and value the current value of the `todos` array.
 4. Add static method called `getList`. This method should return an array with all todo items.
