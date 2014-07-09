@@ -2,7 +2,7 @@
 
 ```javascript
 myModule.config(['$provide', function ($provide) {
-  $provide.decorator('myService', ['$decorator', function ($decorator) {
+  $provide.decorator('myService', ['$delegate', function ($delegate) {
     var originalMethod = $decorator.method;
     $decorator.method = function () {
       //logic
