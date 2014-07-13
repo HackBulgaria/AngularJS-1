@@ -32,7 +32,9 @@ Todo.prototype.updateState = function () {
 };
 
 Todo.prototype.destroy = function () {
-  todos.splice(this.id, 1);
+  todos = todos.filter(function (todo) {
+    return todo.id !== this.id;
+  }, this);
   return this;
 };
 
@@ -53,3 +55,4 @@ Todo.getList = function () {
 };
 
 module.exports = Todo;
+
