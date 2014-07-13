@@ -1,0 +1,12 @@
+<h3>Todo items</h3>
+<p>
+  No todo items
+</p>
+<ul class="todos">
+  <li data-ng-repeat="todo in todos" data-ng-class="(todo.completed) ? 'completed' : 'non-completed'">
+    <input type="checkbox" data-ng-model="todo.completed">
+    <a href="#/todo/{{todo.id}}">{{todo.title}}</a>
+  </li>
+</ul>
+<br>
+<a>Add</a>
