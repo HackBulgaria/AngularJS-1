@@ -6,6 +6,7 @@ var xhrs = [
   $http.get('/bar'),
   $http.get('/baz')
 ];
+
 $q.all(xhrs)
 .then(function (data) {
   data[0]; // foo

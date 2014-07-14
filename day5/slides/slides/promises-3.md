@@ -1,4 +1,4 @@
-# Promises
+## Promises
 
 Initially implemented in MultiLisp and Act 1.
 

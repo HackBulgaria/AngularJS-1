@@ -1,4 +1,4 @@
-# $http methods
+## $http methods
 
 * $http.get
 * $http.head

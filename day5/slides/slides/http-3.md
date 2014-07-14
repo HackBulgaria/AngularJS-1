@@ -1,4 +1,4 @@
-# $http usage
+## $http usage
 
 ```javascript
 $http.get('/url').success(callback);
