@@ -24,7 +24,7 @@ In this exercise we are going to create a simple implementation of limited scope
   * `all` - accepts a list of promises and returns a new promise. The new promise would be resolved once all deferreds passed as arguments are resolved.
   * `when(data)` - the method creates new deferred object, returns its promise and resolves the deferred object with the passed data.
 
-In order to test your implementation run try the sample form-validation app.
+In order to test your implementation run the sample form-validation app.
 
 1. run `bower install`
 2. Start a static http server
