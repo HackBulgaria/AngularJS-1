@@ -21,7 +21,7 @@ In this exercise we are going to create a simple implementation of limited scope
   * `reject(data)` - it throws an error if the promise is not in "clean" state, otherwise it sets the promise state to `REJECTED`, sets the rejected data (`_rejectData`) and invokes each of the promise's fail callbacks with the data passed as argument.
 6. Define object literal called `Q`. It should has the following methods:
   * `defer` returns new deferred object.
-  * `all` - accepts a list of promises and returns a new promise. The new promise would be resolved once all deferreds passed as arguments are resolved.
+  * `all` - accepts a list of promises and returns a new promise. The new promise would be resolved once all promises passed as arguments are resolved.
   * `when(data)` - the method creates new deferred object, returns its promise and resolves the deferred object with the passed data.
 
 In order to test your implementation run the sample form-validation app.
