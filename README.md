@@ -102,7 +102,6 @@ grunt server
   - * Създаване на custom филтри
   - $http vs $resource и АctiveRecord шалонът
   - * Рефакториране на Todo приложението, използвайки RESTful API
-  - * Real-time с WebSockets
 5. Директиви и routing
   - * Рефакториране на приложението, добавяне на валидация на формата за добавяне на todos
   - * "Hello, world!" директива
