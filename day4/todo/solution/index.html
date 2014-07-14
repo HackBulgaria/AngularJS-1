@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <style>
+    ul {
+      list-style: none;
+    }
+    .completed {
+      text-decoration: line-through;
+    }
+    body {
+      padding: 15px;
+    }
+  </style>
+</head>
+<body ng-app ng-controller="TodoCtrl">
+  <label for="current-todo">
+    Todo:<input type="text" ng-model="currentTodo">
+  </label>
+  <button class="btn btn-primary" ng-click="add()">Add</button>
+  <ul>
+    <!-- ng-cloack vs ng-bind -->
+    <!-- duplications -->
+    <li ng-repeat="todo in todos">
+      <label for="complete-input">
+        <input type="checkbox" ng-model="todo.completed" name="complete-input">
+        <span ng-class="(todo.completed) ? 'completed' : 'non-completed' ">{{todo.title}}</span>
+      </label>
+      <a href="#" ng-click="remove($index);">Delete</a>
+    </li>
+  </ul>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="src/TodoCtrl.js"></script>
+</body>
+</html>
