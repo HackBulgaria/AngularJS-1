@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+  <form class="form-horizontal">
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Registartion Form</legend>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Username</label>  
+      <div class="col-md-4">
+      <input id="textinput" name="textinput" type="text" placeholder="Username" class="form-control input-md" required="">
+      <span class="help-block">Between 3 and 15 symbols</span>  
+      </div>
+    </div>
+
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="passwordinput">Password</label>
+      <div class="col-md-4">
+        <input id="passwordinput" name="passwordinput" type="password" placeholder="Password" class="form-control input-md" required="">
+        <span class="help-block">Between 10 and 25 symbols</span>
+      </div>
+    </div>
+
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="passwordinput">Repeat password</label>
+      <div class="col-md-4">
+        <input id="passwordinput2" name="passwordinput" type="password" placeholder="Password" class="form-control input-md" required="">
+        <span class="help-block">Repeat the password</span>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">SSN</label>  
+      <div class="col-md-4">
+      <input id="ssninput" name="textinput" type="text" placeholder="AAA-GG-SSSS" class="form-control input-md" required="">
+      <span class="help-block">Enter a valid SSN</span>  
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4">
+        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Register</button>
+      </div>
+    </div>
+
+    </fieldset>
+  </form>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="q.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
