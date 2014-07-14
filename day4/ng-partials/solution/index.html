@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div ng-app ng-init="todos = []">
+  Filter: <input type="text" ng-model="filterTodos" /> <br>
+  <input type="text" ng-model="currentTodo" /><button ng-click="todos.push(currentTodo); currentTodo = undefined;">Add</button>
+  <ul>
+    <li ng-repeat="todo in todos | filter: filterTodos"><button ng-click="todos.splice($index, 1)">x</button> {{ todo + ' is number ' + ($index + 1) }}</li>
+  </ul>
+  </div>
+  <script src="bower_components/angular/angular.js"></script>
+</body>
+</html>
