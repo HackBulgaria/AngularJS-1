@@ -41,7 +41,7 @@ Todo.prototype.destroy = function () {
 Todo.find = function (id) {
   return todos.filter(function (todo) {
     return todo.id === id;
-  })[0];
+  }).pop();
 };
 
 Todo.getList = function () {
