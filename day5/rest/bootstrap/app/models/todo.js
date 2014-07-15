@@ -25,7 +25,7 @@ Todo.prototype.destroy = function () {
 
 Todo.find = function (id) {
   return todos.filter(function (todo) {
-    return todo.id === Number(id);
+    return todo.id === id;
   }).pop();
 };
 
