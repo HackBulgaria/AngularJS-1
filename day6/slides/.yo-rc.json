@@ -1,0 +1,8 @@
+{
+  "generator-reveal": {
+    "presentationTitle": "Day 6",
+    "packageVersion": "0.0.0",
+    "useSass": false,
+    "deployToGithubPages": false
+  }
+}
