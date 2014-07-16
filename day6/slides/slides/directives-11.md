@@ -1,0 +1,47 @@
+## Built-in directives
+
+<ul>
+  <li>a</li>
+  <li>form</li>
+  <li>input</li>
+  <li>input[checkbox]</li>
+  <li>input[dateTimeLocal]</li>
+  <li>input[date]</li>
+  <li>input[email]</li>
+  <li>input[month]</li>
+  <li>input[number]</li>
+  <li>input[radio]</li>
+  <li>input[text]</li>
+  <li>input[time]</li>
+  <li>ngKeydown</li>
+</ul>
+<ul>
+  <li>input[url]</li>
+  <li>input[week]</li>
+  <li>ngApp</li>
+  <li>ngBind</li>
+  <li>ngBindHtml</li>
+  <li>ngBindTemplate</li>
+  <li>ngBlur</li>
+  <li>ngChange</li>
+  <li>ngChecked</li>
+  <li>ngClass</li>
+  <li>ngClassEven</li>
+  <li>ngClassOdd</li>
+  <li>ngKeypress</li>
+</ul>
+<ul>
+  <li>ngController</li>
+  <li>ngCopy</li>
+  <li>ngCsp</li>
+  <li>ngCut</li>
+  <li>ngDblclick</li>
+  <li>ngDisabled</li>
+  <li>ngFocus</li>
+  <li>ngForm</li>
+  <li>ngHide</li>
+  <li>ngHref</li>
+  <li>ngIf</li>
+  <li>ngInclude</li>
+  <li>ngInit</li>
+</ul>

@@ -1,0 +1,38 @@
+## Built-in directives
+
+<ul>
+  <li>ngKeyup</li>
+  <li>ngList</li>
+  <li>ngModel</li>
+  <li>ngModelOptions</li>
+  <li>ngMousedown</li>
+  <li>ngMouseenter</li>
+  <li>ngMouseleave</li>
+  <li>ngMousemove</li>
+  <li>ngMouseover</li>
+  <li>ngClick</li>
+</ul>
+<ul>
+  <li>ngCloak</li>
+  <li>ngMouseup</li>
+  <li>ngNonBindable</li>
+  <li>ngOpen</li>
+  <li>ngPaste</li>
+  <li>ngPluralize</li>
+  <li>ngReadonly</li>
+  <li>ngRepeat</li>
+  <li>ngSelected</li>
+  <li>ngShow</li>
+</ul>
+<ul>
+  <li>ngSrc</li>
+  <li>ngSrcset</li>
+  <li>ngStyle</li>
+  <li>ngSubmit</li>
+  <li>ngSwitch</li>
+  <li>ngTransclude</li>
+  <li>ngValue</li>
+  <li>script</li>
+  <li>select</li>
+  <li>textarea</li>
+</ul>
