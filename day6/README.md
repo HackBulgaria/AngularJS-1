@@ -7,3 +7,4 @@ Before Wednesday read the following topics:
 3. [$routeProvider](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider)
 4. [Directives](https://docs.angularjs.org/guide/directive)
 5. [$compile](https://docs.angularjs.org/api/ng/service/$compile)
+6. [AJAX webapps crawlable](https://developers.google.com/webmasters/ajax-crawling/docs/getting-started)

@@ -1,4 +1,4 @@
 ## $locationProvider
 
-* `hashPrefix([prefix])`
-* `html5Mode([mode])`
+* `hashPrefix([prefix])` - SEO?
+* `html5Mode([mode])` - How it works?
