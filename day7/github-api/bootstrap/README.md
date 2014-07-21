@@ -63,12 +63,12 @@ For more information review the [GitHub API Docs](https://developer.github.com/v
   - `context, equals to `{ username: username }`
   - `isArray`, equals to false
   - `constructor`, equals to `User`
-11. Define a local variable called `usernamesList`, which as initial value accepts the resunt of the invokation of `storage.get('users')` or an empty array, in case `storage.get('users')` is empty.
+11. Define a local variable called `usernamesList`, which as initial value accepts the result of the invokation of `storage.get('users')` or an empty array, in case `storage.get('users')` is empty.
 12. Add static method called `getUsernames` to `User`, which returns `usernamesList`.
-13. Add static method called `addusername` to `User`, which accepts username as argument and appends it to the `usernamesList` array, after that puts the array into the storage using `storage.put`.
+13. Add static method called `addUsername` to `User`, which accepts username as argument and appends it to the `usernamesList` array, after that puts the array into the storage using `storage.put`.
 14. Add static method called `removeUsername` to `User`, which accepts username as argument, removes it from the array and saves the new value of the array into the storage.
 15. Add static method called `all` to `User`, which returns promise, which combines the promises returned by the execution of `User.get(username)`, for all users in the `usernamesList`.
-16. Define a service called `Repo` using the `github.stats` module and the `factory` method. As local dependencies it should accept the github API URL and `CachableModel`.
+16. Define a service called `Repo` using the `github.stats` module and the `factory` method. As local dependencies it should accept the GitHub API URL and `CachableModel`.
 17. The constructor function should accept a configuration object and set the properties:
   - `name` equals to `config.name`
   - `createdAt` equals to `config.created_at`
