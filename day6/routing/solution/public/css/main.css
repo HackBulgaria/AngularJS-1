@@ -1,0 +1,12 @@
+body {
+  padding: 30px;
+}
+.error {
+  color: #d14;
+}
+.todos {
+  list-style-type: none;
+}
+.completed {
+  text-decoration: line-through;
+}
