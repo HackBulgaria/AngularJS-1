@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="github.stats">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">GitHub</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#/stats/users">User stats</a></li>
+          </ul>
+          <img src="images/loading.gif" class="loading-image">
+        </div>
+      </div>
+    </nav>
+    <div id="alert-container"></div>
+  </header>
+  <section>
+  </section>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/ng-grid/build/ng-grid.js"></script>
+  <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+  <script src="src/app.js"></script>
+  <script src="src/controllers/HomeCtrl.js"></script>
+  <script src="src/controllers/UserCtrl.js"></script>
+  <script src="src/controllers/UserReposCtrl.js"></script>
+  <script src="src/controllers/UsersStatsCtrl.js"></script>
+  <script src="src/controllers/UserRepoStatsCtrl.js"></script>
+  <script src="src/controllers/RepoCtrl.js"></script>
+  <script src="src/controllers/HeaderCtrl.js"></script>
+  <script src="src/services/models/CachableModel.js"></script>
+  <script src="src/services/models/User.js"></script>
+  <script src="src/services/models/Repo.js"></script>
+  <script src="src/services/storage.js"></script>
+  <script src="src/services/req.js"></script>
+  <script src="src/directives/ghAlert.js"></script>
+</body>
+</html>
