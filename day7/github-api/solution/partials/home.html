@@ -1,0 +1,15 @@
+<p>
+  Username: <input type="text" ng-model="currentUser">
+  <button class="btn btn-primary" ng-click="add()">Add</button>
+  <div ng-hide="users.length">
+    There are no any users
+  </div>
+  <ul ng-show="users.length">
+    <li ng-repeat="user in users">
+      <a href="#/users/{{user}}">
+        <span ng-bind="user"></span>
+      </a>
+      <a href="javascript:void(0)" ng-click="remove(user)">[X]</a>
+    </li>
+  </ul>
+</p>

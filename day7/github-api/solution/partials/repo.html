@@ -1,0 +1,28 @@
+<div class="container">
+  <hr>
+    <div class="row row-margin-bottom">
+    <div class="col-md-5 no-padding lib-item" data-category="view">
+      <div class="lib-panel">
+        <div class="row box-shadow">
+           <div class="col-md-6">
+             <a ng-href="{{repo.htmlUrl}}">
+               <img class="lib-img-show" ng-src="{{user.avatarUrl}}">
+             </a>
+           </div>
+           <div class="col-md-6">
+             <div class="lib-row lib-header">
+               <h3><strong>Repository</strong> <span ng-bind="repo.name"></span></h3>
+               <div class="lib-header-seperator"></div>
+             </div>
+             <div class="lib-row lib-desc">
+               Stargazers : <b ng-bind="repo.starsCount"></b><br>
+               Forks : <b ng-bind="repo.forksCount"></b><br>
+               Created at: <b ng-bind="repo.createdAt"></b>
+             </div>
+           </div>
+         </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+  </div>
+</div>

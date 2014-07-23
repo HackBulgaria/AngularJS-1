@@ -1,0 +1,32 @@
+
+
+<div class="container">
+  <hr>
+    <div class="row row-margin-bottom">
+    <div class="col-md-5 no-padding lib-item" data-category="view">
+      <div class="lib-panel">
+        <div class="row box-shadow">
+           <div class="col-md-6">
+             <a ng-href="{{user.htmlUrl}}">
+               <img class="lib-img-show" ng-src="{{user.avatarUrl}}">
+             </a>
+           </div>
+           <div class="col-md-6">
+             <div class="lib-row lib-header">
+               <h3><strong ng-bind="user.type"></strong> <span ng-bind="user.username"></span></h3>
+               <div class="lib-header-seperator"></div>
+             </div>
+             <div class="lib-row lib-desc">
+               Followers : <b ng-bind="user.followers"></b><br>
+               Following : <b ng-bind="user.following"></b><br>
+               Created at: <b ng-bind="user.createdAt"></b><br><br><br>
+               <a ng-href="#/repos/{{user.username}}">Repositories</a>
+               <a ng-href="#/stats/users/{{user.username}}">Statistics</a>
+             </div>
+           </div>
+         </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+  </div>
+</div>
