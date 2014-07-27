@@ -1,0 +1,115 @@
+<section>
+  <img src="http://gruntjs.com/img/grunt-logo.png">
+</section>
+<section>
+  <h3>Why...</h3>
+  <p>For building your application there are plenty of different tasks which should be done each time you want to deploy.</p>
+  <p>There are:
+    <ul>
+      <li>Make</li>
+      <li>Rake</li>
+      <li>Cake</li>
+      <li>...</li>
+    </ul>
+  </p>
+</section>
+<section>
+  <h2>Grunt</h2>
+  <p>Grunt is extensible task management system which allows you to execute different tasks. It is highly extensible, you have plugin for almost everything and each plugin is completely open-source so you can customize it to your needs.</p>
+  <p>For using Grunt you need Node.js and install the <code>grunt-cli</code></p>
+  <pre><code>
+npm install -g grunt-cli
+  </code></pre>
+</section>
+<section>
+  <h2>Gruntfile.js</h2>
+  <p>Gruntfile.js defines all the tasks you need for your building process. You can group and run them in any order.</p>
+  <p>For creating your building process with Grunt.js you write JavaScript which is fun and easy, you need basic concepts such as object literals.</p>
+</section>
+<section>
+  <h2>Grunt plugins</h2>
+  <p>For installing grunt plugins you can use <code>npm</code> (Node Package Manager).</p>
+  <p>You should start by running:</p>
+  <pre><code>
+npm init
+  </code></pre>
+  <p>The <code>init</code> command creates configuration file called <code>package.json</code>. It contains basic information for your project such as: name, repository, dependencies, version,...</p>
+</section>
+<section>
+  <h2>Installing grunt plugins</h2>
+  <p>Using <code>npm</code> you can install grunt plugins using:</p>
+  <pre><code>
+npm install grunt-contrib-uglify --save-dev
+  </code></pre>
+  <p><code>--save-dev</code> is not required but it will save you time by including the grunt plugin in the development dependencies of your project.</p>
+</section>
+<section>
+  <h2>Using grunt plugins</h2>
+  <p>Grunt configuration is contained inside Gruntfile.js. It loads different grunt plugins, configures them and creates tasks.</p>
+  <p>You can load grunt plugin by:</p>
+  <pre><code>
+grunt.loadNpmTasks('grunt-contrib-uglify');
+  </code></pre>
+</section>
+<section>
+  <h2>Gruntfile.js configuration</h2>
+  <p>You can configure your plugin by:</p>
+  <pre><code>
+grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
+  uglify: {
+    build: {
+      src: 'src/<%= pkg.name %>.js',
+      dest: 'build/<%= pkg.name %>.min.js'
+    }
+  }
+});
+  </code></pre>
+</section>
+<section>
+  <h2>Creating tasks</h2>
+  <p>In case you have many tasks you want to run for building your project you can use:</p>
+  <pre><code>
+  grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy']);
+  </code></pre>
+</section>
+<section>
+  <h2>Putting all together</h2>
+  <pre><code>
+module.exports = function(grunt) {
+
+// Project configuration.
+grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
+  uglify: {
+    options: {
+      banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+    },
+    build: {
+      src: 'src/<%= pkg.name %>.js',
+      dest: 'build/<%= pkg.name %>.min.js'
+    }
+  }
+});
+
+// Load the plugin that provides the "uglify" task.
+grunt.loadNpmTasks('grunt-contrib-uglify');
+
+// Default task(s).
+grunt.registerTask('default', ['uglify']);
+
+};
+  </code></pre>
+</section>
+
+<section>
+  <h2>Runnig grunt tasks</h2>
+  <p>After registering given task you can run it by:</p>
+  <pre><code>
+grunt taskname
+  </code></pre>
+  <p>There is one special task named "default" which can be run:</p>
+  <pre><code>
+grunt
+  </code></pre>
+</section>
