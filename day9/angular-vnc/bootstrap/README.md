@@ -16,7 +16,7 @@ First, of all you will need to install Yeoman, if you don't already have it on y
 
 ```bash
 # Installs Yeoman
-npm install -g yeoman
+npm install -g yo
 # Installs the AngularJS generator for Yeoman
 npm install -g generator-angular
 ```
