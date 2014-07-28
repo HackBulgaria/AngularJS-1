@@ -6,7 +6,6 @@ Includes:
 
 - Web Socket
 - Flash Socket
-- HTML file (forever iframe)
-- XHR multipart
 - XHR polling
 - JSONP polling
+- HTML file
