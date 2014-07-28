@@ -228,7 +228,7 @@ function VNCClient($q, Io) {
 
   this.toRfbKeyCode = function (code, shift) {
     var keyMap = VNCClient.keyMap;
-    for (var i = 0, m = keyMap.length; i &lt; m; i++)
+    for (var i = 0, m = keyMap.length; i < m; i++)
       if (code == keyMap[i][0])
         return keyMap[i][shift ? 2 : 1];
     return null;
