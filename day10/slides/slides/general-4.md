@@ -12,3 +12,4 @@ app
         ├── directive2.js
         └── directive2.sass
 ```
+This approach can be combined with both directory structures above.
