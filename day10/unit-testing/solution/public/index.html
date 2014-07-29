@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="public/components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body data-ng-app="todo">
+  <a href="#/">Home</a><br>
+  <div data-ng-view></div>
+  <script src="bower_components/components/angular/angular.js"></script>
+  <script src="bower_components/components/angular-route/angular-route.js"></script>
+  <script src="src/app.js"></script>
+  <script src="src/controllers/TodoCtrl.js"></script>
+  <script src="src/controllers/TodosCtrl.js"></script>
+  <script src="src/services/Todo.js"></script>
+  <script src="src/directives/todoForm.js"></script>
+</body>
+</html>
