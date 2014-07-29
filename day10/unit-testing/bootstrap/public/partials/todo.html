@@ -1,0 +1,11 @@
+<h1>Todo #<span data-ng-bind="todo.id"></span></h1>
+
+<section>
+  <p>Title: <span data-ng-bind="todo.title"></span></p>
+  <p>Description: <span data-ng-bind="todo.description"></span></p>
+  <p>Created: <span data-ng-bind="todo.created"></span></p>
+  <p>
+    <a href="#/edit/{{todo.id}}">Edit</a>&nbsp;
+    <a href="#" data-ng-click="remove()">Remove</a>
+  </p>
+</section>

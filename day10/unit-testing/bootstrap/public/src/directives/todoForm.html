@@ -1,0 +1,16 @@
+<form novalidate name="todoForm">
+  <span class="error" data-ng-show="!todoForm.titleInput.$valid && todoForm.titleInput.$dirty">The name of the todo is required</span>
+  <br>
+  <label for="titleInput">Todo title:
+    <input type="text" name="titleInput" class="form-control" data-ng-model="todo.title" required>
+  </label>
+  <br>
+  <span class="error" data-ng-show="todoForm.descriptionInput.$error.required && todoForm.descriptionInput.$dirty">The description of the todo is required</span>
+  <span class="error" data-ng-show="todoForm.descriptionInput.$error.minlength && todoForm.descriptionInput.$dirty">The description of the todo should be more than 10 symbols</span>
+  <br>
+  <label for="descriptionInput">Description:
+    <textarea name="descriptionInput" required data-ng-minlength="5" data-ng-model="todo.description" class="form-control"></textarea>
+  </label>
+  <br>
+  <button data-ng-click="saveData()" class="btn btn-primary" data-ng-disabled="todoForm.$invalid">Save</button>
+</form>
