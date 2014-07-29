@@ -2,7 +2,7 @@
 
 TodoApp.factory('Todo', function ($http, $q) {
   'use strict';
-  var todos = null;
+  var todos = [];
 
   function Todo(data) {
     this.id = data.id;
@@ -15,9 +15,10 @@ TodoApp.factory('Todo', function ($http, $q) {
   Todo.prototype.save = function () {
     todos.push(this);
     var self = this;
-    $http.post('/todo', this)
+    return $http.post('/todo', this)
     .then(function (d) {
       self.id = d.data.id;
+      return self;
     });
   };
 
@@ -45,7 +46,7 @@ TodoApp.factory('Todo', function ($http, $q) {
   };
 
   Todo.getList = function () {
-    if (todos) {
+    if (todos && todos.length) {
       return $q.when(todos);
     }
     return $http.get('/todo')
