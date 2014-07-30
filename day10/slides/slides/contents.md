@@ -4,7 +4,6 @@
 - Best practices
   - General
     - Directory structure
-    - Markup
     - Optimize the digest cycle
     - Others
   - Modules

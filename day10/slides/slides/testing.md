@@ -2,4 +2,4 @@
 
 - Jasmine
 - Karma
-- ngMocks
+- ngMock
