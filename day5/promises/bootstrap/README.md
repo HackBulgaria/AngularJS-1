@@ -1,5 +1,7 @@
 # Promises
 
+**NOTE** the promise is simplified version of Q. It doesn't support chaining and the rest of the interface is not fully backward compatible with Kris Kowal's Q.
+
 In this exercise we are going to create a simple implementation of limited scope of the API of Kris Kowal's Q.
 
 1. Define "enum" (object with numeric values) called `STATES`. It should has the following properties:

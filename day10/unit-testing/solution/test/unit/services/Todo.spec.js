@@ -56,7 +56,8 @@ describe('Todo', function () {
       expect(todo.id).toBe(2);
     }));
 
-    it('should has method update, which updates the item and sends new request', inject(function ($httpBackend, Todo) {
+    it('should has method update, which updates the item and sends new request',
+        inject(function ($httpBackend, Todo) {
       todo.id = 1;
       todo.title = 'new title';
       $httpBackend.whenPOST('/todo/1')
