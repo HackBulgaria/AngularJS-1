@@ -13,11 +13,11 @@ var DOMCompiler = DOMCompiler || {
       })
       .filter(Boolean)
       .forEach(function (d) {
-          if (d.provision.scope && !isCreated) {
-            isCreated = true;
-            $scope = $scope.$new();
-          }
-          d.provision.link(dom, $scope, d.expr);
+        if (d.provision.scope && !isCreated) {
+          isCreated = true;
+          $scope = $scope.$new();
+        }
+        d.provision.link(dom, $scope, d.expr);
       });
     return $scope;
   },
